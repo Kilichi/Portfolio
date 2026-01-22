@@ -1,92 +1,106 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
+import {
+  SiLua, SiTypescript, SiJavascript, SiPython, SiCplusplus,
+  SiAstro, SiTailwindcss, SiFivem, SiMysql, SiMongodb,
+  SiNodedotjs, SiGit
+} from 'react-icons/si';
+import { FaJava, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const technologies = [
-  // Lenguajes de Programación
-  { name: 'Lua', icon: '🔵', color: 'from-blue-500 to-blue-600', bgColor: 'bg-blue-500/10', borderColor: 'border-blue-500/30' },
-  { name: 'TypeScript', icon: '🔷', color: 'from-blue-400 to-blue-500', bgColor: 'bg-blue-400/10', borderColor: 'border-blue-400/30' },
-  { name: 'JavaScript', icon: '🟡', color: 'from-yellow-400 to-yellow-500', bgColor: 'bg-yellow-400/10', borderColor: 'border-yellow-400/30' },
-  { name: 'Java', icon: '☕', color: 'from-orange-500 to-orange-600', bgColor: 'bg-orange-500/10', borderColor: 'border-orange-500/30' },
-  { name: 'Python', icon: '🐍', color: 'from-green-500 to-green-600', bgColor: 'bg-green-500/10', borderColor: 'border-green-500/30' },
-  { name: 'C++', icon: '⚙️', color: 'from-blue-600 to-blue-700', bgColor: 'bg-blue-600/10', borderColor: 'border-blue-600/30' },
-  
-  // Frontend
-  { name: 'React', icon: '⚛️', color: 'from-cyan-400 to-cyan-500', bgColor: 'bg-cyan-400/10', borderColor: 'border-cyan-400/30' },
-  { name: 'Astro', icon: '🚀', color: 'from-purple-500 to-purple-600', bgColor: 'bg-purple-500/10', borderColor: 'border-purple-500/30' },
-  { name: 'Tailwind CSS', icon: '💨', color: 'from-teal-400 to-teal-500', bgColor: 'bg-teal-400/10', borderColor: 'border-teal-400/30' },
-  { name: 'HTML/CSS', icon: '🎨', color: 'from-orange-400 to-orange-500', bgColor: 'bg-orange-400/10', borderColor: 'border-orange-400/30' },
-  
-  // Backend & Herramientas
-  { name: 'Node.js', icon: '🟢', color: 'from-green-500 to-green-600', bgColor: 'bg-green-500/10', borderColor: 'border-green-500/30' },
-  { name: 'FiveM', icon: '🎮', color: 'from-green-400 to-green-500', bgColor: 'bg-green-400/10', borderColor: 'border-green-400/30' },
-  { name: 'Git', icon: '📦', color: 'from-red-500 to-red-600', bgColor: 'bg-red-500/10', borderColor: 'border-red-500/30' },
-  { name: 'Bash', icon: '💻', color: 'from-gray-500 to-gray-600', bgColor: 'bg-gray-500/10', borderColor: 'border-gray-500/30' },
-  
-  // Bases de Datos
-  { name: 'SQL', icon: '🗄️', color: 'from-blue-500 to-blue-600', bgColor: 'bg-blue-500/10', borderColor: 'border-blue-500/30' },
-  { name: 'MySQL', icon: '🐬', color: 'from-blue-500 to-blue-600', bgColor: 'bg-blue-500/10', borderColor: 'border-blue-500/30' },
-  { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-600', bgColor: 'bg-green-500/10', borderColor: 'border-green-500/30' },
+  { name: 'Lua', icon: <SiLua />, color: 'text-[#2C2D72]' },
+  { name: 'TypeScript', icon: <SiTypescript />, color: 'text-[#3178C6]' },
+  { name: 'JavaScript', icon: <SiJavascript />, color: 'text-[#F7DF1E]' },
+  { name: 'Java', icon: <FaJava />, color: 'text-[#007396]' },
+  { name: 'Python', icon: <SiPython />, color: 'text-[#3776AB]' },
+  { name: 'C++', icon: <SiCplusplus />, color: 'text-[#00599C]' },
+  { name: 'React', icon: <FaReact />, color: 'text-[#61DAFB]' },
+  { name: 'Astro', icon: <SiAstro />, color: 'text-[#FF5D01]' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: 'text-[#06B6D4]' },
+  { name: 'HTML5', icon: <FaHtml5 />, color: 'text-[#E34F26]' },
+  { name: 'CSS3', icon: <FaCss3 />, color: 'text-[#1572B6]' },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-[#339933]' },
+  { name: 'FiveM', icon: <SiFivem />, color: 'text-[#FF8F00]' },
+  { name: 'Git', icon: <SiGit />, color: 'text-[#F05032]' },
+  { name: 'MySQL', icon: <SiMysql />, color: 'text-[#4479A1]' },
+  { name: 'MongoDB', icon: <SiMongodb />, color: 'text-[#47A248]' },
 ];
 
 export default function Skills() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.from(cardsRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: 'power3.out',
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="skills" className="py-32 relative">
+    <section id="skills" ref={sectionRef} className="py-32 relative bg-[#030014]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Code2 className="w-10 h-10 text-primary-400" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Mis <span className="text-gradient">Habilidades</span>
-            </h2>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="p-3 glass rounded-2xl">
+              <Code2 className="w-8 h-8 text-primary-400" />
+            </div>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full" />
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            Stack <span className="text-gradient">Tecnológico</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Un arsenal de herramientas modernas seleccionadas para construir soluciones
+            escalables, eficientes y visualmente impactantes.
+          </p>
         </motion.div>
 
-        <div className="flex justify-center">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 max-w-6xl">
-            {technologies.map((tech, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {technologies.map((tech, index) => (
+            <div
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el!)}
+              className="group relative"
+            >
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className={`
-                  ${tech.bgColor} ${tech.borderColor}
-                  border-2 rounded-xl p-6
-                  flex flex-col items-center justify-center
-                  cursor-pointer
-                  transition-all duration-300
-                  hover:shadow-lg hover:shadow-primary-500/20
-                  group
-                `}
+                whileHover={{ y: -8, scale: 1.05 }}
+                className="relative"
               >
-                <div className={`
-                  w-16 h-16 rounded-lg
-                  bg-gradient-to-br ${tech.color}
-                  flex items-center justify-center
-                  mb-4
-                  group-hover:scale-110
-                  transition-transform duration-300
-                  shadow-lg
-                `}>
-                  <span className="text-3xl">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur"></div>
+                <div className="relative glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 h-full">
+                  <div className={`text-5xl ${tech.color} transition-transform duration-500 group-hover:scale-110`}>
                     {tech.icon}
+                  </div>
+                  <span className="text-gray-300 font-medium tracking-wide text-sm group-hover:text-white transition-colors">
+                    {tech.name}
                   </span>
+
+                  <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-white/10 group-hover:bg-primary-500 transition-colors" />
                 </div>
-                <span className="text-gray-100 font-semibold text-center text-sm md:text-base">
-                  {tech.name}
-                </span>
               </motion.div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
