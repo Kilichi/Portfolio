@@ -6,14 +6,14 @@ const experiences = [
     title: 'Desarrollador Full Stack',
     company: 'Servidores de Videojuegos (FiveM)',
     period: '2018 - Presente',
-    description: 'Desarrollo de servidores de videojuegos utilizando Lua como lenguaje principal. Creación de sistemas complejos, interfaces de usuario modernas y optimización de rendimiento.',
+    description: 'Aprender desarollo de forma autodidcata, me llevo a investigar un poco mas como funcionaban los juegos y todo el ecosistema de los servidores. Desarollé mi primer servidor de videojuegos sobre 2018 y mas a delante con los conocimientos que iba aprendiendo consegui un puesto de trabajo estable que aun mantengo ..',
     technologies: ['Lua', 'JavaScript', 'TypeScript', 'React', 'FiveM'],
   },
   {
     title: 'Desarrollador Frontend',
     company: 'Proyectos Personales',
-    period: '2020 - Presente',
-    description: 'Desarrollo de interfaces modernas y responsivas utilizando React, TypeScript y Astro. Enfoque en UX/UI excepcionales y rendimiento optimizado.',
+    period: '2020 - 2024',
+    description: 'Desarrollo de interfaces modernas y responsivas utilizando React, TypeScript y Astro. Enfoque en UX/UI excepcionales y rendimiento optimizado. Trabajé en proyectos personales y en proyectos para clientes, me ayudó a mejorar mis habilidades y a conocer mejor el mercado laboral.',
     technologies: ['React', 'TypeScript', 'Astro', 'Tailwind CSS'],
   },
   {

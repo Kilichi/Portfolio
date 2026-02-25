@@ -104,7 +104,7 @@ export default function Hero() {
             className="text-lg md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
             Esculpiendo experiencias digitales de alto rendimiento. Especialista en{' '}
-            <span className="text-white font-semibold">ecosistemas FiveM</span> y{' '}
+            <span className="text-white font-semibold">ecosistemas back-end</span> y{' '}
             <span className="text-primary-400 font-semibold">arquitecturas modernas</span>.
           </motion.p>
 
@@ -161,14 +161,6 @@ export default function Hero() {
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Descubrir</span>
-            <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
-              <motion.div
-                className="w-1 h-2 bg-primary-500 rounded-full"
-                animate={{ y: [0, 16, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </div>
           </motion.a>
         </motion.div>
       </div>

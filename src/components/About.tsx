@@ -14,13 +14,13 @@ const achievements = [
   },
   {
     icon: Target,
-    title: 'Especialista FiveM',
-    description: 'Experto en desarrollo con Lua para servidores de videojuegos',
+    title: 'Aprendiendo las tecnologias de futuro',
+    description: 'Me gusta mucho aprender nuevas tecnologias y estar al día de las nuevas tendencias',
   },
   {
     icon: Award,
-    title: 'Excelencia Académica',
-    description: '10 en Programación, sin exámenes suspendidos en DAW',
+    title: 'Pasion por la programacion',
+    description: 'Me encanta la programacion y me gusta mucho aprender nuevas cosas',
   },
 ];
 
@@ -54,25 +54,20 @@ export default function About() {
             </h3>
             <p className="text-gray-400 text-lg leading-relaxed">
               Hola, soy <span className="text-primary-400 font-semibold">Jose Poveda</span>. 
-              Llevo aproximadamente <span className="text-primary-400 font-semibold">6 años</span> trabajando 
-              como desarrollador, especializándome en servidores de videojuegos.
+              Llevo aproximadamente <span className="text-primary-400 font-semibold">6 años</span> estudiando 
+              programación, especializándome en el desarollo web.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Mi viaje comenzó de forma autodidacta con cursos de Udemy sobre JavaScript, 
+              Mi viaje comenzó de forma autodidacta con cursos online sobre JavaScript, 
               y poco a poco fui expandiendo mis conocimientos hacia TypeScript. 
               Posteriormente, me centré en <span className="text-primary-400 font-semibold">Lua</span>, 
-              el lenguaje que uso a diario para desarrollo en <span className="text-primary-400 font-semibold">FiveM</span>.
+              que era el lenguaje que usaba para crear servidores de videojuegos en <span className="text-primary-400 font-semibold">FiveM</span>.
+              Con el tiempo me di cuenta de que el desarrollo web era lo que me gustaba más, y por eso actualmente estoy estudiando <span className="text-primary-400 font-semibold">primero de DAW</span> y me esta gustando mucho.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed">
-              He desarrollado interfaces de todo tipo y he aprendido <span className="text-primary-400 font-semibold">React JS</span> 
-              y <span className="text-primary-400 font-semibold">Astro</span>, que actualmente estoy explorando. 
-              Actualmente estudio <span className="text-primary-400 font-semibold">primero de DAW</span> y me va bastante bien, 
-              especialmente en programación donde tengo un <span className="text-primary-400 font-semibold">10</span>.
-            </p>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              También tengo buenos conocimientos de <span className="text-primary-400 font-semibold">Java</span> y 
-              <span className="text-primary-400 font-semibold"> Python</span>, lo que me permite abordar 
-              proyectos desde múltiples perspectivas.
+
+              También me gusta mucho el diseño de infraestructuras y control de versiones y eso me ha llevado a aprender a usar <span className="text-primary-400 font-semibold">Git</span> y <span className="text-primary-400 font-semibold">GitHub</span>.
+              Otra de mis pasiones es Java, me encanta lo exigente que es con el programador y lo estable que puede ser.
             </p>
           </motion.div>
 

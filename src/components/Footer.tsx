@@ -29,7 +29,7 @@ export default function Footer() {
             className="text-gray-400 text-sm flex items-center gap-2"
           >
             <Code className="w-4 h-4 text-primary-400" />
-            <span>Desarrollado con Astro, React y TypeScript</span>
+            <span>Desarrollado con React y TypeScript</span>
           </motion.p>
         </div>
       </div>
