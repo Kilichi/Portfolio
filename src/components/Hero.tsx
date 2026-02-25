@@ -87,7 +87,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
               </span>
-              Disponible para nuevos proyectos
+              Abierto a nuevos empleos
             </span>
           </motion.div>
 
@@ -114,7 +114,7 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 glass px-5 py-2.5 rounded-xl border-white/5 shadow-xl">
               <Code className="w-5 h-5 text-primary-400" />
-              <span className="text-sm font-medium">Full Stack Dev</span>
+              <span className="text-sm font-medium">Apasionado del desarollo</span>
             </div>
             <div className="flex items-center gap-2 glass px-5 py-2.5 rounded-xl border-white/5 shadow-xl">
               <Gamepad2 className="w-5 h-5 text-accent-400" />

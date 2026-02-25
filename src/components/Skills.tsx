@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
 import {
   SiLua, SiTypescript, SiJavascript, SiPython, SiCplusplus,
-  SiAstro, SiTailwindcss, SiFivem, SiMysql, SiMongodb,
+  SiTailwindcss, SiFivem, SiMysql, SiMongodb,
   SiNodedotjs, SiGit
 } from 'react-icons/si';
 import { FaJava, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
@@ -17,7 +17,6 @@ const technologies = [
   { name: 'Java', icon: <FaJava />, color: 'text-[#007396]' },
   { name: 'Python', icon: <SiPython />, color: 'text-[#3776AB]' },
   { name: 'React', icon: <FaReact />, color: 'text-[#61DAFB]' },
-  { name: 'Astro', icon: <SiAstro />, color: 'text-[#FF5D01]' },
   { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: 'text-[#06B6D4]' },
   { name: 'Node.js', icon: <SiNodedotjs />, color: 'text-[#339933]' },
   { name: 'FiveM', icon: <SiFivem />, color: 'text-[#FF8F00]' },

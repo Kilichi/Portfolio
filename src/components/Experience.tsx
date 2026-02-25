@@ -20,7 +20,7 @@ const experiences = [
     title: 'Estudiante DAW',
     company: 'Desarrollo de Aplicaciones Web',
     period: '2023 - Presente',
-    description: 'Estudiante de primer curso con excelentes resultados. Especialización en programación con calificación de 10. Aprendizaje continuo de tecnologías web modernas.',
+    description: 'Estudiante de primer curso con excelentes resultados. Especializacion en JAVA. Aprendizaje continuo de tecnologías web modernas.',
     technologies: ['Java', 'Python', 'JavaScript', 'HTML/CSS'],
   },
 ];

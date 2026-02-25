@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-gray-800">
+    <footer className="py-12 border-t border-gray-800 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <motion.p
@@ -14,11 +14,6 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-gray-400 text-sm flex items-center gap-2"
           >
-            <span>Hecho con</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            <span>por Jose Poveda</span>
-            <span className="mx-2">•</span>
-            <span>{currentYear}</span>
           </motion.p>
           
           <motion.p
