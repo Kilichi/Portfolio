@@ -1,32 +1,21 @@
 import { motion } from 'framer-motion';
 import { Code, BookOpen, Target, Award } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const achievements = [
-  {
-    icon: Code,
-    title: '6 Años de Experiencia',
-    description: 'Desarrollando servidores de videojuegos y aplicaciones web',
-  },
-  {
-    icon: BookOpen,
-    title: 'Autodidacta',
-    description: 'Aprendizaje continuo desde JavaScript hasta TypeScript y más',
-  },
-  {
-    icon: Target,
-    title: 'Aprendiendo las tecnologias de futuro',
-    description: 'Me gusta mucho aprender nuevas tecnologias y estar al día de las nuevas tendencias',
-  },
-  {
-    icon: Award,
-    title: 'Pasion por la programacion',
-    description: 'Me encanta la programacion y me gusta mucho aprender nuevas cosas',
-  },
-];
+const achievementKeys = [
+  { keyTitle: 'achievement1Title', keyDesc: 'achievement1Desc' },
+  { keyTitle: 'achievement2Title', keyDesc: 'achievement2Desc' },
+  { keyTitle: 'achievement3Title', keyDesc: 'achievement3Desc' },
+  { keyTitle: 'achievement4Title', keyDesc: 'achievement4Desc' },
+] as const;
+
+const icons = [Code, BookOpen, Target, Award];
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
-    <section id="about" className="py-32 relative">
+    <section id="about" className="py-32 relative bg-white dark:bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,10 +24,10 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Sobre <span className="text-gradient">Mí</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-gray-100">
+            {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-slate-400 to-slate-500 dark:from-primary-500 dark:to-primary-600 mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
@@ -49,25 +38,23 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h3 className="text-3xl font-bold text-gray-100">
-              Mi <span className="text-gradient">Trayectoria</span>
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-gray-100">
+              {t('about.trajectory')} <span className="text-gradient">{t('about.trajectoryHighlight')}</span>
             </h3>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Hola, soy <span className="text-primary-400 font-semibold">Jose Poveda</span>. 
-              Llevo aproximadamente <span className="text-primary-400 font-semibold">6 años</span> estudiando 
-              programación, especializándome en el desarollo web.
+            <p className="text-slate-700 dark:text-gray-400 text-lg leading-relaxed">
+              {t('about.intro1')} <span className="text-slate-900 dark:text-primary-400 font-semibold">Jose Poveda</span>.
+              {t('about.intro2')} <span className="text-slate-900 dark:text-primary-400 font-semibold">6</span> {t('about.intro2b')}
             </p>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Mi viaje comenzó de forma autodidacta con cursos online sobre JavaScript, 
-              y poco a poco fui expandiendo mis conocimientos hacia TypeScript. 
-              Posteriormente, me centré en <span className="text-primary-400 font-semibold">Lua</span>, 
-              que era el lenguaje que usaba para crear servidores de videojuegos en <span className="text-primary-400 font-semibold">FiveM</span>.
-              Con el tiempo me di cuenta de que el desarrollo web era lo que me gustaba más, y por eso actualmente estoy estudiando <span className="text-primary-400 font-semibold">primero de DAW</span> y me esta gustando mucho.
+            <p className="text-slate-700 dark:text-gray-400 text-lg leading-relaxed">
+              {t('about.intro3')} <span className="text-slate-900 dark:text-primary-400 font-semibold">Lua</span>,
+              {t('about.intro3b')} <span className="text-slate-900 dark:text-primary-400 font-semibold">FiveM</span>.
+              {t('about.intro3c')} <span className="text-slate-900 dark:text-primary-400 font-semibold">{t('about.intro3d')}</span>
+              {t('about.intro3e')}
             </p>
-            <p className="text-gray-400 text-lg leading-relaxed">
-
-              También me gusta mucho el diseño de infraestructuras y control de versiones y eso me ha llevado a aprender a usar <span className="text-primary-400 font-semibold">Git</span> y <span className="text-primary-400 font-semibold">GitHub</span>.
-              Otra de mis pasiones es Java, me encanta lo exigente que es con el programador y lo estable que puede ser.
+            <p className="text-slate-700 dark:text-gray-400 text-lg leading-relaxed">
+              {t('about.intro4')} <span className="text-slate-900 dark:text-primary-400 font-semibold">Git</span> {t('about.intro4b')}
+              <span className="text-slate-900 dark:text-primary-400 font-semibold">GitHub</span>.
+              {t('about.intro4c')}
             </p>
           </motion.div>
 
@@ -78,7 +65,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-6"
           >
-            {achievements.map((achievement, index) => (
+            {achievementKeys.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -88,12 +75,15 @@ export default function About() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="glass p-6 rounded-xl card-hover"
               >
-                <achievement.icon className="w-10 h-10 text-primary-400 mb-4" />
-                <h4 className="text-xl font-semibold mb-2 text-gray-100">
-                  {achievement.title}
+                {(() => {
+                  const Icon = icons[index];
+                  return <Icon className="w-10 h-10 text-slate-700 dark:text-primary-400 mb-4" />;
+                })()}
+                <h4 className="text-xl font-semibold mb-2 text-slate-900 dark:text-gray-100">
+                  {t(`about.${item.keyTitle}`)}
                 </h4>
-                <p className="text-gray-400 text-sm">
-                  {achievement.description}
+                <p className="text-slate-700 dark:text-gray-400 text-sm">
+                  {t(`about.${item.keyDesc}`)}
                 </p>
               </motion.div>
             ))}

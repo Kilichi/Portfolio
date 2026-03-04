@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import {
   SiLua, SiTypescript, SiJavascript, SiPython, SiCplusplus,
   SiTailwindcss, SiFivem, SiMysql, SiMongodb,
@@ -28,6 +29,7 @@ const technologies = [
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const { t } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -49,7 +51,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-32 relative bg-[#030014]">
+    <section id="skills" ref={sectionRef} className="py-32 relative bg-slate-50 dark:bg-[#030014]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,15 +62,14 @@ export default function Skills() {
         >
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="p-3 glass rounded-2xl">
-              <Code2 className="w-8 h-8 text-primary-400" />
+              <Code2 className="w-8 h-8 text-slate-700 dark:text-primary-400" />
             </div>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Stack <span className="text-gradient">Tecnológico</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-slate-900 dark:text-gray-100">
+            {t('skills.title')} <span className="text-gradient">{t('skills.titleHighlight')}</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Un arsenal de herramientas modernas seleccionadas para construir soluciones
-            escalables, eficientes y visualmente impactantes.
+          <p className="text-slate-700 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 
@@ -83,16 +84,16 @@ export default function Skills() {
                 whileHover={{ y: -8, scale: 1.05 }}
                 className="relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur"></div>
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-400 to-slate-500 dark:from-primary-500 dark:to-accent-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur"></div>
                 <div className="relative glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 h-full">
                   <div className={`text-5xl ${tech.color} transition-transform duration-500 group-hover:scale-110`}>
                     {tech.icon}
                   </div>
-                  <span className="text-gray-300 font-medium tracking-wide text-sm group-hover:text-white transition-colors">
+                  <span className="text-slate-800 dark:text-gray-300 font-medium tracking-wide text-sm group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                     {tech.name}
                   </span>
 
-                  <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-white/10 group-hover:bg-primary-500 transition-colors" />
+                  <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-slate-300 dark:bg-white/10 group-hover:bg-slate-600 dark:group-hover:bg-primary-500 transition-colors" />
                 </div>
               </motion.div>
             </div>

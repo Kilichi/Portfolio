@@ -1,33 +1,24 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, Code2 } from 'lucide-react';
+import { Briefcase, Calendar } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const experiences = [
-  {
-    title: 'Desarrollador Full Stack',
-    company: 'Servidores de Videojuegos (FiveM)',
-    period: '2018 - Presente',
-    description: 'Aprender desarollo de forma autodidcata, me llevo a investigar un poco mas como funcionaban los juegos y todo el ecosistema de los servidores. Desarollé mi primer servidor de videojuegos sobre 2018 y mas a delante con los conocimientos que iba aprendiendo consegui un puesto de trabajo estable que aun mantengo ..',
-    technologies: ['Lua', 'JavaScript', 'TypeScript', 'React', 'FiveM'],
-  },
-  {
-    title: 'Desarrollador Frontend',
-    company: 'Proyectos Personales',
-    period: '2020 - 2024',
-    description: 'Desarrollo de interfaces modernas y responsivas utilizando React, TypeScript y Astro. Enfoque en UX/UI excepcionales y rendimiento optimizado. Trabajé en proyectos personales y en proyectos para clientes, me ayudó a mejorar mis habilidades y a conocer mejor el mercado laboral.',
-    technologies: ['React', 'TypeScript', 'Astro', 'Tailwind CSS'],
-  },
-  {
-    title: 'Estudiante DAW',
-    company: 'Desarrollo de Aplicaciones Web',
-    period: '2023 - Presente',
-    description: 'Estudiante de primer curso con excelentes resultados. Especializacion en JAVA. Aprendizaje continuo de tecnologías web modernas.',
-    technologies: ['Java', 'Python', 'JavaScript', 'HTML/CSS'],
-  },
+const experienceKeys = [
+  { title: 'job1Title', company: 'job1Company', period: 'job1Period', description: 'job1Desc' },
+  { title: 'job2Title', company: 'job2Company', period: 'job2Period', description: 'job2Desc' },
+  { title: 'job3Title', company: 'job3Company', period: 'job3Period', description: 'job3Desc' },
+];
+
+const techLists = [
+  ['Lua', 'JavaScript', 'TypeScript', 'React', 'FiveM'],
+  ['React', 'TypeScript', 'Astro', 'Tailwind CSS'],
+  ['Java', 'Python', 'JavaScript', 'HTML/CSS'],
 ];
 
 export default function Experience() {
+  const { t } = useLanguage();
+
   return (
-    <section id="experience" className="py-32 relative">
+    <section id="experience" className="py-32 relative bg-white dark:bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,14 +27,14 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Mi <span className="text-gradient">Experiencia</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-gray-100">
+            {t('experience.title')} <span className="text-gradient">{t('experience.titleHighlight')}</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-slate-400 to-slate-500 dark:from-primary-500 dark:to-primary-600 mx-auto rounded-full" />
         </motion.div>
 
         <div className="space-y-8">
-          {experiences.map((exp, index) => (
+          {experienceKeys.map((exp, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
@@ -55,21 +46,19 @@ export default function Experience() {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div className="mb-4 md:mb-0">
                   <div className="flex items-center gap-3 mb-2">
-                    <Briefcase className="w-6 h-6 text-primary-400" />
-                    <h3 className="text-2xl font-bold text-gray-100">{exp.title}</h3>
+                    <Briefcase className="w-6 h-6 text-slate-700 dark:text-primary-400" />
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-gray-100">{t(`experience.${exp.title}`)}</h3>
                   </div>
-                  <p className="text-primary-400 text-lg font-semibold mb-2">{exp.company}</p>
+                  <p className="text-slate-800 dark:text-primary-400 text-lg font-semibold mb-2">{t(`experience.${exp.company}`)}</p>
                 </div>
-                <div className="flex items-center gap-2 text-gray-400">
+                <div className="flex items-center gap-2 text-slate-700 dark:text-gray-400">
                   <Calendar className="w-5 h-5" />
-                  <span className="font-medium">{exp.period}</span>
+                  <span className="font-medium">{t(`experience.${exp.period}`)}</span>
                 </div>
               </div>
-              
-              <p className="text-gray-400 mb-6 leading-relaxed">{exp.description}</p>
-              
+              <p className="text-slate-700 dark:text-gray-400 mb-6 leading-relaxed">{t(`experience.${exp.description}`)}</p>
               <div className="flex flex-wrap gap-2">
-                {exp.technologies.map((tech, techIndex) => (
+                {techLists[index].map((tech, techIndex) => (
                   <motion.span
                     key={techIndex}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -77,7 +66,7 @@ export default function Experience() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2 + techIndex * 0.1 }}
                     whileHover={{ scale: 1.1 }}
-                    className="px-4 py-2 bg-primary-500/20 border border-primary-500/30 rounded-lg text-sm font-medium text-primary-400"
+                    className="px-4 py-2 bg-slate-200 dark:bg-primary-500/20 border border-slate-300 dark:border-primary-500/30 rounded-lg text-sm font-medium text-slate-800 dark:text-primary-400"
                   >
                     {tech}
                   </motion.span>
